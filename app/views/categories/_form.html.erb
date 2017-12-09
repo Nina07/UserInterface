@@ -16,6 +16,11 @@
     <%= f.text_field :name %>
   </div>
 
+  <div class="field">
+    <%= f.label :parent_id %>
+    <%= f.select :parent_id, Category.all.collect {|c| [c.name, c.id] } %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
