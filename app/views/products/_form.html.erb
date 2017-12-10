@@ -26,6 +26,11 @@
     <%= f.select :category_id, Category.all.collect {|c| [c.name, c.id] } %>
   </div>
 
+  <div>
+    <%= f.file_field :avatar %>
+    <%= f.hidden_field :avatar_cache %>
+  </div><br>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,16 +1,24 @@
 <p id="notice"><%= notice %></p>
-
+<h2>
+	Category Detail
+</h2>
 <p>
   <strong>Name:</strong>
   <%= @category.name %>
 </p>
 
-	<% if @category.parent_id.present? %>
-		<p>
-		  <strong> Parent Category Name:</strong>
-		  <% @category.parent_category.name %>
-		</p>
-	<% end %>
+<p>
+	<strong>
+		<%= image_tag("#{@category.avatar}") %>
+	</strong>
+</p>
+
+<% if @category.parent_id.present? %>
+	<p>
+	  <strong> Parent Category Name:</strong>
+	  <% @category.parent_category.name %>
+	</p>
+<% end %>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |
 <%= link_to 'Back', categories_path %>

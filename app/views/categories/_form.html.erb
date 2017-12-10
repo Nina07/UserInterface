@@ -18,8 +18,13 @@
 
   <div class="field">
     <%= f.label :parent_id %>
-    <%= f.select :parent_id, Category.all.collect {|c| [c.name, c.id] } %>
+    <%= f.select :parent_id, Category.all.collect {|c| [c.name, c.id] }, include_blank: true %>
   </div>
+
+  <div>
+    <%= f.file_field :avatar %>
+    <%= f.hidden_field :avatar_cache %>
+  </div><br>
 
   <div class="actions">
     <%= f.submit %>

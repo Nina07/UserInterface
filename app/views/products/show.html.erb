@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
-
-<p>
+<h2>Product details</h2>
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+<br><br>
+<p class="zero-margin">
   <strong>Name:</strong>
   <%= @product.name %>
 </p>
 
-<p>
+<p class="zero-margin">
   <strong>Quantity:</strong>
   <%= @product.quantity %>
 </p>
+<br>
+<%= image_tag @product.avatar, style: "width:inherit;" %>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
