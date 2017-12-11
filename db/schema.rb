@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20171210162733) do
 
-  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -20,7 +23,7 @@ ActiveRecord::Schema.define(version: 20171210162733) do
     t.string   "avatar"
   end
 
-  create_table "images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "images", force: :cascade do |t|
     t.string   "file_id"
     t.string   "imageable_type"
     t.integer  "imageable_id"
@@ -30,14 +33,14 @@ ActiveRecord::Schema.define(version: 20171210162733) do
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id", using: :btree
   end
 
-  create_table "product_categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "product_categories", force: :cascade do |t|
     t.integer "product_id"
     t.integer "category_id"
     t.index ["category_id"], name: "index_product_categories_on_category_id", using: :btree
     t.index ["product_id"], name: "index_product_categories_on_product_id", using: :btree
   end
 
-  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "products", force: :cascade do |t|
     t.string   "name"
     t.integer  "quantity"
     t.datetime "created_at",  null: false
@@ -47,7 +50,7 @@ ActiveRecord::Schema.define(version: 20171210162733) do
     t.index ["category_id"], name: "index_products_on_category_id", using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
